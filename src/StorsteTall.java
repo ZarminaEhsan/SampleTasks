@@ -19,8 +19,8 @@ public class StorsteTall {
 
         // Finding index nr of a biggest nr
         int maxNr = 0;
-        for(int i = 1; i < list.length; i++){
-            if(list[maxNr] < list[i]){
+        for(int i = 1; i < list.length; ++i){
+            if(list[i] > list[maxNr]){
                 maxNr = i;
             }
         }

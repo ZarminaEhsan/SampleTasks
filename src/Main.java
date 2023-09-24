@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Creating a list of array
-        int[] list1 = {16,3,8,9,2,7,6};
+        int[] list1 = {16,3,8,9,2,17,6};
 
         // Creating instance of a class to find the biggest nr differently
         StorsteTall method1 = new StorsteTall();
