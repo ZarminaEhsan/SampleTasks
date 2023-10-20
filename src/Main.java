@@ -1,96 +1,45 @@
+import assignment1.Fakultet;
+import assignment1.FinnMaksverdi;
+import assignment1.FinnMinMaks;
+import assignment1.FinnMinverdi;
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        int[] a = {8,4,17,10,6,20,1,11,15,3,18,9,2,7,19};
+        /* ************************* Avsnitt 1.1.1 array ************************* */
+        int[] a = {8,4,19,10,6,2,1,11,15,3,18,19,2,17,9};
 
-        // Creating class instances
-        StorsteTall maksMetode = new StorsteTall();
-        MinsteTall minMetode = new MinsteTall();
+        /* ************************* Avsnitt 1.1.2 maks metode ************************* */
+        int maksIndeks = FinnMaksverdi.maks(a);
+        System.out.println("Index of biggest number is " + maksIndeks +
+                " which gives the number " + a[maksIndeks] + "." );
 
-        // Finding the biggest and smallest number
-        int maksNr = maksMetode.finnMaksIndeks(a);
-        int minNr = minMetode.finnMinIndeks(a);
+        /* ************************* Avsnitt 1.1.2 oppgave 2 ************************* */
+        int minIndeks = FinnMinverdi.min(a);
+        System.out.println("Index of smallest number is " + minIndeks +
+                " which gives the number " + a[minIndeks] + "." );
 
-        // Viser resultat
-        System.out.println("Index of biggest number is " + maksNr +
-                " which gives the number " + a[maksNr] + "." );
-
-        System.out.println("Index of smallest number is " + minNr +
-                " which gives the number " + a[minNr] + "." );
-
-        /* ************************* Avsnitt 1.1.3 oppgave 5 ************************* */
-
-        int[] value = minmaks(a , minMetode, maksMetode);
-        System.out.println(Arrays.toString(value));
-
-        /* ************************* effective way for oppgave 5 ************************* */
-
-        int[] value1 = minmaks1(a);
-        System.out.println(Arrays.toString(value1));
+        /* ************************* Avsnitt 1.1.2 oppgave 3 ************************* */
+        int sisteMaksIndeks = FinnMaksverdi.sisteMaks(a);
+        System.out.println("Index of last biggest number is " + sisteMaksIndeks +
+                " which gives the number " + a[sisteMaksIndeks] + "." );
 
         /* ************************* Avsnitt 1.1.3 oppgave 5 ************************* */
+        int[] value = FinnMinMaks.minmaks(a);
+        System.out.println("Minimum and maximum numbers " + Arrays.toString(value));
 
+        int[] value1 = FinnMinMaks.minmaksKompendiet(a);
+        System.out.println("Minimum and maximum numbers by using effective method " + Arrays.toString(value1));
+
+        /* ************************* Avsnitt 1.1.3 oppgave 6 ************************* */
         Scanner input = new Scanner(System.in);
         System.out.print("Skriv et tall: ");
         String innTall = input.nextLine(); // Read user input
         int tall = Integer.parseInt(innTall);
-        long n = fak(tall);
+        long n = Fakultet.fak(tall);
         System.out.println("Fakultet av tallet " + tall + " blir " + n + ".");
 
-    }
-
-    public static int[] minmaks(int[] a, MinsteTall min, StorsteTall maks){
-
-        int minNr = min.finnMinIndeks(a);
-        int maksNr = maks.finnMaksIndeks(a);
-
-        int m1 = a[minNr];
-        int m2 = a[maksNr];
-        int[] b = {m1, m2};
-
-        return b;
-    }
-
-    public static int[] minmaks1(int[] a) {
-
-        if (a == null || a.length < 1) {
-            throw new IllegalArgumentException("Input array should not be null or empty");
-        }
-
-        int mi = 0, ma = 0;
-        int minverdi = a[0], maksverdi = a[0];
-
-        int verdi = 0;
-
-
-        for (int i = 1; i < a.length; ++i) {
-
-            verdi = a[i];
-
-            if (verdi < minverdi) {
-                mi = i;
-                minverdi = verdi;
-            } else if (verdi > maksverdi) {
-                ma = i;
-                maksverdi = verdi;
-            }
-        }
-        return new int[]{minverdi, maksverdi};
-    }
-
-    public static long fak(int n){
-
-        if(n < 0){
-            throw new IllegalArgumentException(("n must be a positive interger."));
-        }
-
-        long fakultet = 1;
-
-        for(int i = n; i > 0; --i){
-            fakultet *= i;
-        }
-        return fakultet;
     }
 }
