@@ -26,7 +26,7 @@ mein n-1 comparison hoa hai for mak method and same for min method iss liye comb
 public class FinnMinMaks {
     public static int[] minmaks(int[] a){
         int minNr = FinnMinverdi.min(a);
-        int maksNr = FinnMaksverdi.maks(a);
+        int maksNr = FinnMaksverdi.maks1(a);
         int m1 = a[minNr];
         int m2 = a[maksNr];
         return new int[]{m1, m2};
