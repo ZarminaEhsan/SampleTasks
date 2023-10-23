@@ -34,12 +34,14 @@ public class Main {
 
     private static void showMaxMinMenu(Scanner input) {
         System.out.println("\033[1m" + "Choose an assignment to run:" + "\033[0m");
-        System.out.println("1: Find largest number with version 1");
-        System.out.println("2: Find largest number with version 2");
-        System.out.println("3: Find largest number with version 3");
-        System.out.println("4: Find smallest number");
-        System.out.println("5: Find last largest number");
-        System.out.println("6: Get the array containing smallest and biggest numbers");
+        System.out.println("1: Find the largest number with version 1");
+        System.out.println("2: Find the largest number with version 2");
+        System.out.println("3: Find the largest number with version 3");
+        System.out.println("4: Find the smallest number with version 1");
+        System.out.println("5: Find the smallest number with version 2");
+        System.out.println("6: Find the smallest number with version 3");
+        System.out.println("7: Find the last largest number");
+        System.out.println("8: Get the array containing smallest and biggest numbers");
         System.out.println("0: Exit");
 
         int choice = input.nextInt();
@@ -69,14 +71,30 @@ public class Main {
                 );
             }
             case 4 -> {
-                int indeks = runMinMethod(a);
+                int indeksMin1 = runMinMethod1(a);
                 System.out.println(
                         "\033[1m" + "Minimum number" + "\033[0m" +
-                                " \nIndex: " + indeks +
-                                "\nNumber: " + a[indeks]
+                                " \nIndex: " + indeksMin1 +
+                                "\nNumber: " + a[indeksMin1]
                 );
             }
             case 5 -> {
+                int indeksMin2 = runMinMethod2(a, 0, a.length);
+                System.out.println(
+                        "\033[1m" + "Minimum number" + "\033[0m" +
+                                " \nIndex: " + indeksMin2 +
+                                "\nNumber: " + a[indeksMin2]
+                );
+            }
+            case 6 -> {
+                int indeksMin3 = runMinMethod3(a, 0, a.length-1);
+                System.out.println(
+                        "\033[1m" + "Minimum number" + "\033[0m" +
+                                " \nIndex: " + indeksMin3 +
+                                "\nNumber: " + a[indeksMin3]
+                );
+            }
+            case 7 -> {
                 int sisteMaksIndeks = runSisteMaks(a);
                 System.out.println(
                         "\033[1m" + "Last biggest number" + "\033[0m" +
@@ -84,7 +102,7 @@ public class Main {
                                 "\nNumber: " + a[sisteMaksIndeks]
                 );
             }
-            case 6 -> {
+            case 8 -> {
                 int[] value = runMinMaks(a);
                 System.out.println("Minimum and maximum numbers " + Arrays.toString(value));
                 int[] value1 = minmaksKompendiet(a);

@@ -5,8 +5,8 @@ import java.util.Random;
 public class ArrayUtils {
 
     // Checking empty array
-    public static void checkArray(int[] array){
-        if(array.length < 1){
+    public static void checkArray(int[] a){
+        if(a.length < 1){
             throw new java.util.NoSuchElementException("Tabellen er tom!");
         }
     }
@@ -48,11 +48,23 @@ public class ArrayUtils {
         for (int i = 0; i < n; i++) a[i] = i+1;
 
         Random r = new Random();  // hentes fra java.util
-        for (int k = n-1; k > 0; k--)
-        {
+
+        for (int k = n-1; k > 0; k--) {
             int i = r.nextInt(k+1);  // tilfeldig tall fra [0,k]
             bytt(a,k,i);
         }
         return a;
+    }
+
+    // from kompendiet avsnitt 1.2.2 oppgave 1 deekh lo kiya kerna oppgave exact kerna yaa nahi
+    public static void randPerm(int[] a) // stokker om a
+    {
+        Random r = new Random();  // hentes fra java.util
+
+        for (int k = a.length-1; k > 0; k--)
+        {
+            int i = r.nextInt(k+1);  // tilfeldig tall fra [0,k]
+            bytt(a,k,i);
+        }
     }
 }

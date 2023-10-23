@@ -68,11 +68,11 @@ public class ArrayOperations {
         }
 
         int m = 0;  // indeks til foreløpig største verdi (m for maks)
-        int maksverdi = a[0];    // største verdi
+        int maksverdi = a[m];    // største verdi
         for (int i = 1; i < a.length; ++i){
             if (a[i] > maksverdi){
-                maksverdi = a[i];     // største verdi oppdateres
                 m = i;  // indeksen oppdateres
+                maksverdi = a[m];     // største verdi oppdateres
             }
         }
         return m;
@@ -104,7 +104,8 @@ public class ArrayOperations {
     }
 
     /* ************************* Avsnitt 1.1.2 oppgave 2 ************************* */
-    public static int runMinMethod(int[] a) {
+    public static int runMinMethod1(int[] a) {
+
         // Check if array is empty
         try{
             checkArray(a);
@@ -121,10 +122,56 @@ public class ArrayOperations {
         return m;   // returnerer indeksen/posisjonen til minste verdi
     }
 
+    /* ************************* Avsnitt 1.2.1 oppgave 1 ************************* */
+    public static int runMinMethod2(int[] a, int fra, int til) {
+
+        // Check if array is empty
+        if (fra < 0 || til > a.length || fra >= til)
+        {
+            throw new IllegalArgumentException("Illegalt intervall!");
+        }
+
+        int m = fra;              // indeks til foreløpig minste verdi i a[fra:til> (m for min)
+        int minverdi = a[fra];   // største verdi i a[fra:til>
+
+        for (int i = fra + 1; i < til; i++) {
+            if (a[i] < minverdi) {
+                m = i;                // indeks til minste verdi oppdateres
+                minverdi = a[m];     // minste verdi oppdateres
+            }
+        }
+        // posisjonen til største verdi i a[fra:til>
+        return m;
+    }
+
+    /* ************************* Avsnitt 1.2.1 oppgave 1 ************************* */
+    public static int runMinMethod3(int[] a, int v, int h) {
+
+        // Check if array is empty
+        if (v < 0 || h > a.length || v >= h)
+        {
+            throw new IllegalArgumentException("Illegalt intervall!");
+        }
+
+        int m = v;              // indeks til foreløpig minste verdi i a[fra:til> (m for min)
+        int minverdi = a[m];   // største verdi i a[fra:til>
+
+        for (int i = v + 1; i <= h; i++) {
+            if (a[i] < minverdi) {
+                m = i;                // indeks til minste verdi oppdateres
+                minverdi = a[m];     // minste verdi oppdateres
+            }
+        }
+        // posisjonen til største verdi i a[fra:til>
+        return m;
+    }
+
     /* ************************* Avsnitt 1.1.2 oppgave 3 ************************* */
     public static int runSisteMaks(int[] a){
 
         // Check if array is empty
+        int fra = 0;
+        int til = a.length;
         try{
             checkArray(a);
         } catch (java.util.NoSuchElementException e) {
@@ -143,7 +190,7 @@ public class ArrayOperations {
 
     /* ************************* Avsnitt 1.1.3 oppgave 5 ineffective ************************* */
     public static int[] runMinMaks(int[] a){
-        int minNr = runMinMethod(a);
+        int minNr = runMinMethod1(a);
         int maksNr = ArrayOperations.runMaxVersion2(a);
         int m1 = a[minNr];
         int m2 = a[maksNr];
@@ -152,6 +199,9 @@ public class ArrayOperations {
 
     /* ************************* min-max-metoden effective ************************* */
     public static int[] minmaksKompendiet(int[] a) {
+
+        int fra = 0;
+        int til = a.length;
         try{
             checkArray(a);
         } catch (java.util.NoSuchElementException e) {
