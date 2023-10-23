@@ -22,8 +22,16 @@ public static long fak(int n)
   }
 */
 
+import java.util.Scanner;
+
 public class Fakultet {
-    public static long fak(int n){
+
+    /* ************************* Avsnitt 1.1.3 oppgave 6 ************************* */
+    public static long runFindFakultet(Scanner input) {
+        System.out.print("\033[1m" + "Skriv et tall: " + "\033[0m");
+
+        String innTall = input.nextLine(); // Read user input
+        int n = Integer.parseInt(innTall);
 
         if(n < 0){
             throw new IllegalArgumentException(("n must be a positive interger."));

@@ -48,15 +48,11 @@ public class ArrayUtils {
         for (int i = 0; i < n; i++) a[i] = i+1;
 
         Random r = new Random();  // hentes fra java.util
-
         for (int k = n-1; k > 0; k--)
         {
             int i = r.nextInt(k+1);  // tilfeldig tall fra [0,k]
             bytt(a,k,i);
         }
-
         return a;
-
     }
-
 }
