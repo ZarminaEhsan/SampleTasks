@@ -2,6 +2,7 @@ import java.util.*;
 import static assignment1.ArrayOperations.*;
 import static assignment1.Fakultet.*;
 import static assignment1.PerformanceAnalysis.*;
+import static eksamensoppgaver.sortering.*;
 
 public class Main {
 
@@ -17,6 +18,7 @@ public class Main {
             System.out.println("1: Max/Min array operations");
             System.out.println("2: Performance analysis");
             System.out.println("3: Maths operations");
+            System.out.println("4: Eksamensoppgaver");
             System.out.println("0: Exit");
 
             int categoryChoice = input.nextInt();
@@ -24,6 +26,7 @@ public class Main {
                 case 1 -> showMaxMinMenu(input);
                 case 2 -> showPerformanceMenu(input);
                 case 3 -> showMathsOperationsMenu(input);
+                case 4 -> showEksamensoppgaverMenu();
                 case 0 -> {
                     return;  // Exit the application
                 }
@@ -137,5 +140,11 @@ public class Main {
         } else {
             System.out.println("Invalid choice. Try again.");
         }
+    }
+
+    private static void showEksamensoppgaverMenu(){
+
+        int[] array = {3,3,4,5,5,6,7,7,7,8};
+        frekvensFordeling1(array);
     }
 }
