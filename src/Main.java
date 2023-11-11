@@ -3,6 +3,7 @@ import static assignment1.ArrayOperations.*;
 import static assignment1.Fakultet.*;
 import static assignment1.PerformanceAnalysis.*;
 import static eksamensoppgaver.sortering.*;
+import static lectures.Forelesninger.*;
 
 public class Main {
 
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("2: Performance analysis");
             System.out.println("3: Maths operations");
             System.out.println("4: Eksamensoppgaver");
+            System.out.println("5: Examples from lectures");
             System.out.println("0: Exit");
 
             int categoryChoice = input.nextInt();
@@ -27,6 +29,7 @@ public class Main {
                 case 2 -> showPerformanceMenu(input);
                 case 3 -> showMathsOperationsMenu(input);
                 case 4 -> showEksamensoppgaverMenu();
+                case 5 -> showLectureExampleMenu();
                 case 0 -> {
                     return;  // Exit the application
                 }
@@ -143,8 +146,15 @@ public class Main {
     }
 
     private static void showEksamensoppgaverMenu(){
-
         int[] array = {3,3,4,5,5,6,7,7,7,8};
         frekvensFordeling1(array);
+    }
+
+    private static void showLectureExampleMenu(){
+        int[] array1 = {3,9,11,5,2,17,4};
+        nestMaks(array1);
+
+        int[] array2 = {2,9,8,6,5,3};
+        turneringstrer(array2);
     }
 }
