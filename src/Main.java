@@ -4,6 +4,7 @@ import static assignment1.Fakultet.*;
 import static assignment1.PerformanceAnalysis.*;
 import static eksamensoppgaver.sortering.*;
 import static lectures.Forelesninger.*;
+import static lectures.Sorting.quickSort;
 
 public class Main {
 
@@ -21,6 +22,8 @@ public class Main {
             System.out.println("3: Maths operations");
             System.out.println("4: Eksamensoppgaver");
             System.out.println("5: Examples from lectures");
+            System.out.println("6: Quick sort algorithm");
+            System.out.println("7: Pre and post incrementing");
             System.out.println("0: Exit");
 
             int categoryChoice = input.nextInt();
@@ -30,6 +33,8 @@ public class Main {
                 case 3 -> showMathsOperationsMenu(input);
                 case 4 -> showEksamensoppgaverMenu();
                 case 5 -> showLectureExampleMenu();
+                case 6 -> showQuickSortAlgorithm();
+                case 7 -> showIncrementing();
                 case 0 -> {
                     return;  // Exit the application
                 }
@@ -156,5 +161,49 @@ public class Main {
 
         int[] array2 = {2,9,8,6,5,3};
         turneringstrer(array2);
+    }
+
+    private static void showQuickSortAlgorithm(){
+        int[] array = {3,4,1,3,4,2,2,1,2,4,3};
+        quickSort(array, 0 , array.length - 1);
+
+        for (int i : array){
+            System.out.print(i + " ");
+        }
+    }
+
+    private static void showIncrementing() {
+
+        int[] a = {1,3,5,7,9};
+        int[] b = {2,3,5,6,8};
+        int[] c = new int[a.length + b.length];
+
+        int k = ukjent(a,b,c);
+        for (int i = 0; i < k; i++) {
+            System.out.print(c[i] + " ");
+        }
+    }
+
+    public static int ukjent(int[] a, int[] b, int[] c){
+        int i = 0, j = 0, k = 0;
+        while ( i < a.length && j < b.length) {
+            if (a[i] < b[j]){
+                c[k++] = a[i++];
+                System.out.println(c[k] + " "+ k + " "+ a[i] + " " + i);
+            }
+            else if (a[i] == b[j]) {
+                i++; j++;
+            }
+            else {
+                c[k++] = b[j++];
+            }
+        }
+        while (i < a.length){
+            c[k++] = a[i++];
+        }
+        while (j < b.length){
+            c[k++] = b[j++];
+        }
+        return k;
     }
 }
